@@ -1,0 +1,20 @@
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+fun main() {
+    print("Введите высоту лесенки: ")
+    val height = readLine()?.toIntOrNull()
+
+    if (height == null || height <= 0) {
+        println("Ошибка: введите положительное число!")
+        return
+    }
+
+    println("Перевёрнутая лесенка высотой $height:")
+
+    for (i in height downTo 1) {
+                for (j in 1..i) {
+            print("#")
+        }
+        println()
+    }
+}
