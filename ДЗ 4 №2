@@ -1,0 +1,22 @@
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+fun main() {
+    val nums = arrayOf(2, 6, 7, 13, 22)
+    var sumchet: Int = 0
+    var sumnechet: Int = 0
+    var chetcount =0
+    var nechetcount =0
+    for (i in 0..nums.size - 1)
+    {
+        if (nums[i] % 2 == 0) {
+            sumchet += nums[i]
+            chetcount++
+        }
+    else {
+        sumnechet += nums[i]
+            nechetcount++
+    }
+}
+    println("Сумма четных элементов " + sumchet + " Сумма четных элементов " +  chetcount)
+    println ("Сумма нечетных элементов " + sumnechet + " Сумма нечетных элементов " +  nechetcount)
+}
