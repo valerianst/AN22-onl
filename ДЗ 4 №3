@@ -1,0 +1,8 @@
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+fun main() {
+    val nums = arrayOf(2, 6, 7, 13, 22)
+    println("Изначальный массив: ${nums.joinToString()}")
+    nums.reverse()
+    println("Обратный массив: ${nums.joinToString()}")
+}
