@@ -1,25 +1,24 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 fun main() {
-    val nums = arrayOf(1, 6, 7, 3, 0)
-    val  a =nums.min()
-    val  b =  nums.max()
+    println("Введите строку:")
+    val input = readLine() ?: ""
 
-    var maxValue = nums[0]
-    var maxIndex = 0
-    var minValue = nums[0]
-    var minIndex = 0
+    val reversedWords = reverseWordsWithPunctuation(input)
+    println("Результат: $reversedWords")
+}
 
-    for (i in nums.indices) {
-        if (nums[i] > maxValue) {
-            maxIndex = i - 1
-        }
-        if (nums[i] < minValue) {
-            minIndex = i
+fun reverseWordsWithPunctuation(input: String): String {
+    val words = input.trim().split("\\s+".toRegex())
+
+    val result = StringBuilder()
+
+    for (i in words.size - 1 downTo 0) {
+        result.append(words[i])
+        if (i > 0) {
+            result.append(" ")
         }
     }
-    println("Минимальное значение " + a + " Индекс элемента " + minIndex)
-    println ("Максимальное значение " + b + " Индекс элемента " + maxIndex)
 
-
-    }
+    return result.toString()
+}
