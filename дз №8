@@ -1,0 +1,78 @@
+interface Product {
+    val name: String
+    val basePrice: Double
+    fun getFinalPrice(): Double
+}
+
+// Класс Electronics с 10% скидкой
+class Electronics(
+    override val name: String,
+    override val basePrice: Double
+) : Product {
+    override fun getFinalPrice(): Double {
+        return basePrice * 0.9 // 10% скидка
+    }
+}
+
+// Класс Clothing с 15% скидкой
+class Clothing(
+    override val name: String,
+    override val basePrice: Double
+) : Product {
+    override fun getFinalPrice(): Double {
+        return basePrice * 0.85 // 15% скидка
+    }
+}
+
+// Класс Food без скидки
+class Food(
+    override val name: String,
+    override val basePrice: Double
+) : Product {
+    override fun getFinalPrice(): Double {
+        return basePrice // без скидки
+    }
+}
+
+fun main() {
+    // Создаем список товаров
+    val products = listOf(
+        Electronics("Смартфон", 50000.0),
+        Electronics("Ноутбук", 80000.0),
+        Clothing("Куртка", 7000.0),
+        Clothing("Джинсы", 3000.0),
+        Food("Хлеб", 50.0),
+        Food("Молоко", 80.0)
+    )
+
+    // Вывод: финальные цены всех товаров
+    println("Итоговые цены товаров")
+    println("%-15s %-10s %-10s %-10s".format("Товар", "Базовая", "Скидка", "Финальная"))
+    println("−".repeat(50))
+
+    for (product in products) {
+        val discount = product.basePrice - product.getFinalPrice()
+        val discountPercent = when (product) {
+            is Electronics -> "10%"
+            is Clothing -> "15%"
+            else -> "0%"
+        }
+
+        println("%-15s %-10.2f %-10s %-10.2f".format(
+            product.name,
+            product.basePrice,
+            discountPercent,
+            product.getFinalPrice()
+        ))
+    }
+
+    // Подсчитываем общую стоимость
+    val totalBasePrice = products.sumOf { it.basePrice }
+    val totalFinalPrice = products.sumOf { it.getFinalPrice() }
+    val totalDiscount = totalBasePrice - totalFinalPrice
+
+    println("−".repeat(50))
+    println("%-15s %-10.2f".format("Итого базовая:", totalBasePrice))
+    println("%-15s %-10.2f".format("Общая скидка:", totalDiscount))
+    println("%-15s %-10.2f".format("Итого к оплате:", totalFinalPrice))
+}
